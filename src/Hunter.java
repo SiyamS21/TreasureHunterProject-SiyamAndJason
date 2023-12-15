@@ -16,7 +16,7 @@ public class Hunter
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
      *
-     * @param name The hunter's name.
+     * @param hunterName The hunter's name.
      */
     public Hunter(String hunterName, int startingGold)
     {
@@ -173,6 +173,13 @@ public class Hunter
             printableKit = printableKit.substring(0, index) + space + printableKit.substring(index + 1);
         }
         return printableKit;
+    }
+    public String huntForTreasure(Town town) {
+        if (town.getGenerateTreasure().equals("knife")) {
+            return "You've already found the hidden treasure";
+        } else {
+            return "keep trying bud";
+        }
     }
 
     /**
