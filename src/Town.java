@@ -10,7 +10,7 @@ public class Town
     private Terrain terrain;
     private String printMessage;
     private boolean toughTown;
-    private static String generateTreasure;
+    private String generateTreasure;
 
     //Constructor
     /**
@@ -136,6 +136,10 @@ public class Town
                 hunter.changeGold(-1 * goldDiff);
             }
         }
+    }
+
+    public String getGenerateTreasure() {
+        return generateTreasure;
     }
 
     public String toString()
