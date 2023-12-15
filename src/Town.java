@@ -10,6 +10,7 @@ public class Town
     private Terrain terrain;
     private String printMessage;
     private boolean toughTown;
+    private static String generateTreasure;
 
     //Constructor
     /**
@@ -27,6 +28,18 @@ public class Town
         hunter = null;
 
         printMessage = "";
+
+        int treasures = (int) (Math.random() * 5);
+
+        if (treasures == 1) {
+            generateTreasure = "knife";
+        } else if (treasures == 2) {
+            generateTreasure = "towel";
+        } else if (treasures == 3) {
+            generateTreasure = "opium";
+        } else {
+            generateTreasure = "";
+        }
 
         // higher toughness = more likely to be a tough town
         toughTown = (Math.random() < toughness);
