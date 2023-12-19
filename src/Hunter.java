@@ -175,10 +175,19 @@ public class Hunter
         return printableKit;
     }
     public String huntForTreasure(Town town) {
-        if (town.getGenerateTreasure().equals("knife")) {
-            return "You've already found the hidden treasure";
+        if (!TreasureHunter.isHunted()) {
+            return "You've already hunted this area";
         } else {
-            return "keep trying bud";
+            TreasureHunter.setHunted(false);
+            if (town.getGenerateTreasure().equals("knife")) {
+                return "You've found the knife";
+            } else if (town.getGenerateTreasure().equals("towel")) {
+                return "You've found the towel";
+            } else if (town.getGenerateTreasure().equals("opium")) {
+                return "You've found opium";
+            } else {
+                return "there is no treasure here";
+            }
         }
     }
 
