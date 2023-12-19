@@ -12,6 +12,7 @@ public class TreasureHunter
     private Town currentTown;
     private Hunter hunter;
     private boolean hardMode;
+    private static boolean hunted = true;
 
     //Constructor
     /**
@@ -155,5 +156,12 @@ public class TreasureHunter
         {
             System.out.println("Yikes! That's an invalid option! Try again.");
         }
+    }
+    public static boolean isHunted (){
+        return hunted;
+    }
+
+    public static void setHunted(boolean hunted) {
+        TreasureHunter.hunted = hunted;
     }
 }
