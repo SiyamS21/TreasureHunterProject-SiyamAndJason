@@ -113,11 +113,11 @@ public class Town
         double noTroubleChance;
         if (toughTown)
         {
-            noTroubleChance = 0.66;
+            noTroubleChance = 0.99;
         }
         else
         {
-            noTroubleChance = 0.33;
+            noTroubleChance = 0;
         }
 
         if (Math.random() > noTroubleChance)
@@ -139,6 +139,12 @@ public class Town
                 printMessage += "That'll teach you to go lookin' fer trouble in MY town! Now pay up!";
                 printMessage += "\nYou lost the brawl and pay " +  goldDiff + " gold.";
                 hunter.changeGold(-1 * goldDiff);
+            }
+            if (hunter.getGold() <= 0) {
+                System.out.println(getLatestNews());
+                System.out.println("***");
+                System.out.println("You have 0 gold. U lost bum");
+                System.exit(0);
             }
         }
     }
