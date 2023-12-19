@@ -113,11 +113,11 @@ public class Town
         double noTroubleChance;
         if (toughTown)
         {
-            noTroubleChance = 0.99;
+            noTroubleChance = 0.66;
         }
         else
         {
-            noTroubleChance = 0;
+            noTroubleChance = 0.33;
         }
 
         if (Math.random() > noTroubleChance)
