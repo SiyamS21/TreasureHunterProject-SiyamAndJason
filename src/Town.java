@@ -27,20 +27,25 @@ public class Town
         // gets called from a client class
         hunter = null;
 
+        TreasureHunter.setHunted(true);
+
         printMessage = "";
 
-        int treasures = (int) (Math.random() * 5);
+        generateTreasure = "";
 
-        if (treasures == 1) {
-            generateTreasure = "knife";
-        } else if (treasures == 2) {
-            generateTreasure = "towel";
-        } else if (treasures == 3) {
-            generateTreasure = "opium";
-        } else {
+        int treasures = (int) (Math.random() * 4);
+        double chance = Math.random();
+        if (chance > 0.75) {
             generateTreasure = "";
+        } else {
+            if (treasures == 1) {
+                generateTreasure = "knife";
+            } else if (treasures == 2) {
+                generateTreasure = "towel";
+            } else if (treasures == 3) {
+                generateTreasure = "opium";
+            }
         }
-
         // higher toughness = more likely to be a tough town
         toughTown = (Math.random() < toughness);
     }
