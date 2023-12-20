@@ -38,10 +38,13 @@ public class Shop
             System.out.println("Welcome to the shop! We have the finest wares in town.");
             System.out.println("Currently we have the following items:");
             System.out.println(inventory());
-            System.out.print("What're you lookin' to buy? ");
+            System.out.print("What're you lookin' to buy? \n");
             String item = scanner.nextLine();
+            item = item.toLowerCase();
+            String item2 = item.toUpperCase();
             int cost = checkMarketPrice(item, true);
-            if (cost == 0)
+            int cost2 = checkMarketPrice(item2, true);
+            if (cost == 0 || cost2 == 0)
             {
                 System.out.println("We ain't got none of those.");
             }
@@ -59,10 +62,13 @@ public class Shop
         else
         {
             System.out.println("What're you lookin' to sell? ");
-            System.out.print("You currently have the following items: " + customer.getInventory());
+            System.out.print("You currently have the following items: \n" + customer.getInventory());
             String item = scanner.nextLine();
+            item = item.toLowerCase();
+            String item2 = item.toUpperCase();
             int cost = checkMarketPrice(item, false);
-            if (cost == 0)
+            int cost2 = checkMarketPrice(item2, false);
+            if (cost == 0 || cost2 == 0)
             {
                 System.out.println("We don't want none of those.");
             }
@@ -85,11 +91,11 @@ public class Shop
      */
     public String inventory()
     {
-        String str = "Water: " + WATER_COST + " gold\n";
-        str += "Rope: " + ROPE_COST + " gold\n";
-        str += "Machete: " + MACHETE_COST + " gold\n";
-        str += "Horse: " + HORSE_COST + " gold\n";
-        str += "Boat: " + BOAT_COST + " gold\n";
+        String str = "\n************\nWater: " + WATER_COST + " gold\n************\n";
+        str += "Rope: " + ROPE_COST + " gold\n************\n";
+        str += "Machete: " + MACHETE_COST + " gold\n************\n";
+        str += "Horse: " + HORSE_COST + " gold\n************\n";
+        str += "Boat: " + BOAT_COST + " gold\n************\n";
 
         return str;
     }
@@ -118,7 +124,9 @@ public class Shop
     public void sellItem(String item)
     {
         int buyBackPrice = checkMarketPrice(item, false);
-        if (customer.sellItem(item, buyBackPrice))
+        item = item.toLowerCase();
+        String item2 = item.toUpperCase();
+        if (customer.sellItem(item, buyBackPrice) || customer.sellItem(item2, buyBackPrice))
         {
             System.out.println("Pleasure doin' business with you.");
         }
@@ -154,23 +162,23 @@ public class Shop
      */
     public int getCostOfItem(String item)
     {
-        if (item.equals("Water"))
+        if (item.equals("Water") || item.equals("water") || item.equals("WATER"))
         {
             return WATER_COST;
         }
-        else if (item.equals("Rope"))
+        else if (item.equals("Rope") || item.equals("rope") || item.equals("ROPE"))
         {
             return ROPE_COST;
         }
-        else if (item.equals("Machete"))
+        else if (item.equals("Machete") || item.equals("machete") || item.equals("MACHETE"))
         {
             return MACHETE_COST;
         }
-        else if (item.equals("Horse"))
+        else if (item.equals("Horse")|| item.equals("horse") || item.equals("HORSE"))
         {
             return HORSE_COST;
         }
-        else if (item.equals("Boat"))
+        else if (item.equals("Boat") || item.equals("boat") || item.equals("BOAT"))
         {
             return BOAT_COST;
         }
