@@ -147,6 +147,11 @@ public class TreasureHunter
         else if (choice.equals("H") || choice.equals("h"))
         {
             System.out.println(hunter.huntForTreasure(currentTown));
+            if (hunter.haveAllTreasures()) {
+                System.out.println("Congratulations you've collected all 3 treasures in the game! You win!");
+                System.exit(0);
+            }
+
         }
         else if (choice.equals("X") || choice.equals("x"))
         {
