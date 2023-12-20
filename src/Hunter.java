@@ -131,7 +131,7 @@ public class Hunter
     {
         if (!hasItemInKit(item))
         {
-            kit += item + KIT_DELIMITER;
+            kit += item + ", " + KIT_DELIMITER;
             return true;
         }
 
@@ -147,6 +147,8 @@ public class Hunter
      */
     public boolean hasItemInKit(String item)
     {
+        item = item.toLowerCase();
+        String item2 = item.toUpperCase();
         int placeholder = 0;
 
         while (placeholder < kit.length() - 1)
@@ -159,6 +161,7 @@ public class Hunter
                 // early return
                 return true;
             }
+
         }
         return false;
     }
