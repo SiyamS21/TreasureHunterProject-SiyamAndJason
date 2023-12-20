@@ -14,6 +14,12 @@ public class Hunter
 
     private String treasuresHunted = "";
 
+    private boolean haveKnife = false;
+
+    private boolean haveOpium = false;
+
+    private boolean haveTowel = false;
+
     //Constructor
     /**
      * The base constructor of a Hunter assigns the name to the hunter and an empty kit.
@@ -182,26 +188,44 @@ public class Hunter
         } else {
             TreasureHunter.setHunted(false);
             if (town.getGenerateTreasure().equals("knife")) {
-                treasuresHunted += "knife";
-                if (treasuresHunted.indexOf("knife") != -1 && treasuresHunted.indexOf("towel") != -1 && treasuresHunted.indexOf("opium") != -1) {
-                    return "You've found the knife\nCongratulations you've collected all 3 treasures in the game! You win!";
+                if (haveKnife) {
+                    return "You've found another knife, but you've already found that!";
+                }
+                else {
+                    treasuresHunted += "knife";
+                    haveKnife = true;
                 }
                 return "You've found the knife";
             } else if (town.getGenerateTreasure().equals("towel")) {
-                treasuresHunted += "towel";
-                if (treasuresHunted.indexOf("knife") != -1 && treasuresHunted.indexOf("towel") != -1 && treasuresHunted.indexOf("opium") != -1) {
-                    return "You've found the towel\nCongratulations you've collected all 3 treasures in the game! You win!";
+                if (haveTowel) {
+                    return "You've found another towel, but you've already found that!";
+                }
+                else {
+                    treasuresHunted += "towel";
+                    haveTowel = true;
                 }
                 return "You've found the towel";
             } else if (town.getGenerateTreasure().equals("opium")) {
-                treasuresHunted += "opium";
-                if (treasuresHunted.indexOf("knife") != -1 && treasuresHunted.indexOf("towel") != -1 && treasuresHunted.indexOf("opium") != -1) {
-                    return "You've found opium\nCongratulations you've collected all 3 treasures in the game! You win!";
+                if (haveOpium) {
+                    return "You've found another opium, but you've already found that!";
+                }
+                else {
+                    treasuresHunted += "opium";
+                    haveOpium = true;
                 }
                 return "You've found opium";
             } else {
                 return "there is no treasure here";
             }
+        }
+    }
+
+    public boolean haveAllTreasures() {
+        if (treasuresHunted.indexOf("knife") != -1 && treasuresHunted.indexOf("towel") != -1 && treasuresHunted.indexOf("opium") != -1) {
+            return true;
+        }
+        else {
+            return false;
         }
     }
 
