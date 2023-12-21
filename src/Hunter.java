@@ -153,7 +153,7 @@ public class Hunter
      */
     public boolean hasItemInKit(String item)
     {
-        item = item.toLowerCase();
+        String item1 = item.toLowerCase();
         String item2 = item.toUpperCase();
         int placeholder = 0;
 
@@ -162,7 +162,7 @@ public class Hunter
             int endOfItem = kit.indexOf(KIT_DELIMITER, placeholder);
             String tmpItem = kit.substring(placeholder, endOfItem);
             placeholder = endOfItem + 1;
-            if (tmpItem.equals(item))
+            if (tmpItem.equals(item) || tmpItem.equals(item2) || tmpItem.equals(item1))
             {
                 // early return
                 return true;
