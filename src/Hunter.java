@@ -68,7 +68,9 @@ public class Hunter
      */
     public boolean buyItem(String item, int costOfItem)
     {
-        if (costOfItem == 0 || gold < costOfItem || hasItemInKit(item))
+        String item1 = item.toUpperCase();
+        String item2 = item1.toLowerCase();
+        if (costOfItem == 0 || gold < costOfItem || hasItemInKit(item1) || hasItemInKit(item2) || hasItemInKit(item))
         {
             return false;
         }
@@ -88,13 +90,17 @@ public class Hunter
      */
     public boolean sellItem(String item, int buyBackPrice)
     {
-        if (buyBackPrice <= 0 || !hasItemInKit(item))
+        String item1 = item.toUpperCase();
+        String item2 = item1.toLowerCase();
+        if (buyBackPrice <= 0 || !hasItemInKit(item) || !hasItemInKit(item1) || !hasItemInKit(item2))
         {
             return false;
         }
 
         gold += buyBackPrice;
         removeItemFromKit(item);
+        removeItemFromKit(item2);
+        removeItemFromKit(item1);
         return true;
     }
 
@@ -131,7 +137,7 @@ public class Hunter
     {
         if (!hasItemInKit(item))
         {
-            kit += item + ", " + KIT_DELIMITER;
+            kit += item + KIT_DELIMITER;
             return true;
         }
 
