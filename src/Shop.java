@@ -13,6 +13,7 @@ public class Shop
     private static final int HORSE_COST = 12;
     private static final int BOAT_COST = 20;
 
+
     // instance variables
     private double markdown;
     private Hunter customer;
@@ -91,12 +92,20 @@ public class Shop
      */
     public String inventory()
     {
-        String str = "\n************\nWater: " + WATER_COST + " gold\n************\n";
-        str += "Rope: " + ROPE_COST + " gold\n************\n";
-        str += "Machete: " + MACHETE_COST + " gold\n************\n";
-        str += "Horse: " + HORSE_COST + " gold\n************\n";
-        str += "Boat: " + BOAT_COST + " gold\n************\n";
-
+        String str = "";
+        if (TreasureHunter.getMode().equals("cheat")) {
+             str = "\n************\nWater: " + 1 + " gold\n************\n";
+            str += "Rope: " + 1 + " gold\n************\n";
+            str += "Machete: " + 1 + " gold\n************\n";
+            str += "Horse: " + 1 + " gold\n************\n";
+            str += "Boat: " + 1 + " gold\n************\n";
+        } else {
+             str = "\n************\nWater: " + WATER_COST + " gold\n************\n";
+            str += "Rope: " + ROPE_COST + " gold\n************\n";
+            str += "Machete: " + MACHETE_COST + " gold\n************\n";
+            str += "Horse: " + HORSE_COST + " gold\n************\n";
+            str += "Boat: " + BOAT_COST + " gold\n************\n";
+        }
         return str;
     }
 
