@@ -64,9 +64,9 @@ public class Shop
             System.out.println("What're you lookin' to sell? ");
             System.out.print("You currently have the following items: \n" + customer.getInventory());
             String item = scanner.nextLine();
-            item = item.toLowerCase();
+            String item1 = item.toLowerCase();
             String item2 = item.toUpperCase();
-            int cost = checkMarketPrice(item, false);
+            int cost = checkMarketPrice(item1, false);
             int cost2 = checkMarketPrice(item2, false);
             if (cost == 0 || cost2 == 0)
             {
@@ -107,7 +107,9 @@ public class Shop
     public void buyItem(String item)
     {
         int costOfItem = checkMarketPrice(item, true);
-        if (customer.buyItem(item, costOfItem))
+        String item1 = item.toLowerCase();
+        String item2 = item.toUpperCase();
+        if (customer.buyItem(item1, costOfItem) || customer.buyItem(item2, costOfItem))
         {
             System.out.println("Ye' got yerself a " + item + ". Come again soon.");
         }
@@ -123,11 +125,13 @@ public class Shop
      */
     public void sellItem(String item)
     {
+        String item1 = item.toUpperCase();
+        String item2 = item1.toLowerCase();
         int buyBackPrice = checkMarketPrice(item, false);
-        item = item.toLowerCase();
-        String item2 = item.toUpperCase();
-        if (customer.sellItem(item, buyBackPrice) || customer.sellItem(item2, buyBackPrice))
-        {
+        int buyBackPrice2 = checkMarketPrice(item1, false);
+        int buyBackPrice3 = checkMarketPrice(item2, false);
+        if (customer.sellItem(item, buyBackPrice) || (customer.sellItem(item1, buyBackPrice2) || (customer.sellItem(item2, buyBackPrice3)))) {
+
             System.out.println("Pleasure doin' business with you.");
         }
         else
