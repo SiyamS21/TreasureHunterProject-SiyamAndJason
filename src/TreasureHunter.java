@@ -11,10 +11,11 @@ public class TreasureHunter
     //Instance variables
     private Town currentTown;
     private Hunter hunter;
-    private boolean hardMode;
+    private static boolean hardMode;
 
-    private boolean easyMode;
+    private static boolean easyMode;
     private static boolean hunted = true;
+    private static boolean cheatMode = false;
 
     //Constructor
     /**
@@ -59,6 +60,9 @@ public class TreasureHunter
         else if (mode.equals("3")) {
             hardMode = true;
             hunter = new Hunter(name, 10);
+        } else if (mode.equals("PopUpDownLeftRightCheatCodeSmoke")) {
+            cheatMode = true;
+            hunter = new Hunter(name, 100);
         }
         else {
             hunter = new Hunter(name, 10);
@@ -183,14 +187,15 @@ public class TreasureHunter
         TreasureHunter.hunted = hunted;
     }
 
-    public String getMode() {
+    public static String getMode() {
         if (hardMode) {
             return "hard";
         }
         else if (easyMode) {
             return "easy";
-        }
-        else {
+        } else if (cheatMode) {
+            return "cheat";
+        } else {
             return "normal";
         }
     }
